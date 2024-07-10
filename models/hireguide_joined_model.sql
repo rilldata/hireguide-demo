@@ -5,3 +5,20 @@ select *
 from view_meeting_utterances_and_ml_predictions vmuml
 join view_interview_metadata vim
 on vmuml.workspace_guid = vim.workspace_guid
+and vim.workspace_guid in 
+('26e01fdd-8495-4aaf-8806-427e8e8ff2ef',
+'7354f961-cf78-4b03-b432-1ffba31306a7',
+'95aa1ac7-6511-403f-bff9-8a789e175042',
+'acb90887-91bc-4544-9a5b-54cf099d7cdb',
+'48136029-9db4-44f8-8d55-7a105279216c',
+'12244d60-25fb-4800-854b-f40b9cc7cb2a',
+'848d1e75-67d3-4f33-9c35-0b6b5dedbb84',
+'d616ae56-99d9-49fb-9388-96dae21a357b',
+'95ed0c93-7679-427b-b1f0-31da0229544a',
+'c080e365-0f5b-43d0-89d2-3c8b90e19ae6',
+'eb561d1b-17dd-4389-8f65-1697ea9bb048',
+'ad0e1e4c-fdaf-4f71-baa6-a1edf1e0faeb',
+'42f1bc1-936a-4f7b-9e43-22c2c6f11015',
+'491ae5b0-e572-438e-89ba-e52e01992be4',
+'3f23db29-66b4-4736-b926-acd85d672208'
+)

@@ -6,7 +6,9 @@ type: source
 connector: "athena"
 region: "us-east-2"
 # sql: "SELECT * FROM \"analytics_prod\".recording_meeting_utterances limit 5"
-sql: "SELECT * FROM \"analytics_prod\".view_meeting_utterances_and_ml_predictions limit 100"
+#sql: "SELECT * FROM \"analytics_prod\".view_meeting_utterances_and_ml_predictions WHERE workspace_guid in ('26e01fdd-8495-4aaf-8806-427e8e8ff2ef')"
+
+sql: "SELECT * FROM \"analytics_prod\".view_meeting_utterances_and_ml_predictions order by recording_start_datetime_utc desc limit 50000"
 
 #where recording_start_datetime_utc >= (CURRENT_TIMESTAMP - INTERVAL '1' DAY) and workspace_guid in (
 #'26e01fdd-8495-4aaf-8806-427e8e8ff2ef',
