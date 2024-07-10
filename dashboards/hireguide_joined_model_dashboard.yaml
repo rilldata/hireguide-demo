@@ -1,0 +1,184 @@
+# Dashboard YAML
+# Reference documentation: https://docs.rilldata.com/reference/project-files/dashboards
+# This file was generated using AI.
+
+type: metrics_view
+title: Hireguide Joined Model Metrics
+model: hireguide_joined_model
+timeseries: recording_start_datetime_utc
+dimensions:
+  - label: Workspace Guid
+    column: workspace_guid
+    description: ""
+  - label: Meeting Guid
+    column: meeting_guid
+    description: ""
+  - label: S3 Uri Raw Transcript
+    column: s3_uri_raw_transcript
+    description: ""
+  - label: S3 Version Id Raw Transcript
+    column: s3_version_id_raw_transcript
+    description: ""
+  - label: Speaker Label
+    column: speaker_label
+    description: ""
+  - label: Utterance
+    column: utterance
+    description: ""
+  - label: Participant Guid
+    column: participant_guid
+    description: ""
+  - label: Participant Type
+    column: participant_type
+    description: ""
+  - label: Speaker Guid
+    column: speaker_guid
+    description: ""
+  - label: Speaker First Name
+    column: speaker_first_name
+    description: ""
+  - label: Speaker Last Name
+    column: speaker_last_name
+    description: ""
+  - label: Speaker Full Name
+    column: speaker_full_name
+    description: ""
+  - label: Predicted Class Question Answer
+    column: predicted_class_question_answer
+    description: ""
+  - label: Predicted Class Script Similarity
+    column: predicted_class_script_similarity
+    description: ""
+  - label: Recording Start Time Utc
+    column: recording_start_time_utc
+    description: ""
+  - label: Recording End Time Utc
+    column: recording_end_time_utc
+    description: ""
+  - label: Scheduled Start Time Utc
+    column: scheduled_start_time_utc
+    description: ""
+  - label: Scheduled End Time Utc
+    column: scheduled_end_time_utc
+    description: ""
+  - label: Interview Title
+    column: interview_title
+    description: ""
+  - label: Interview Guid
+    column: interview_guid
+    description: ""
+  - label: Interview Is Archived
+    column: interview_is_archived
+    description: ""
+  - label: Round Title
+    column: round_title
+    description: ""
+  - label: Round Guid
+    column: round_guid
+    description: ""
+  - label: Plan Title
+    column: plan_title
+    description: ""
+  - label: Plan Guid
+    column: plan_guid
+    description: ""
+  - label: Role Guid
+    column: role_guid
+    description: ""
+  - label: Plan Is Archived
+    column: plan_is_archived
+    description: ""
+  - label: Workspace Name
+    column: workspace_name
+    description: ""
+measures:
+  - name: total_meetings
+    label: Total Meetings
+    expression: COUNT(meeting_guid)
+    description: Total number of meetings recorded in the system.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_utterances
+    label: Total Utterances
+    expression: COUNT(utterance)
+    description: Total number of utterances recorded in the system.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_words
+    label: Total Words
+    expression: SUM(num_words)
+    description: Total number of words spoken across all utterances.
+    format_preset: humanize
+    valid_percent_of_total: true
+  - name: average_words_per_utterance
+    label: Average Words per Utterance
+    expression: AVG(num_words)
+    description: Average number of words per utterance.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_participants
+    label: Total Participants
+    expression: COUNT(DISTINCT participant_guid)
+    description: Total number of unique participants.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_speakers
+    label: Total Speakers
+    expression: COUNT(DISTINCT speaker_guid)
+    description: Total number of unique speakers.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_interviews
+    label: Total Interviews
+    expression: COUNT(interview_guid)
+    description: Total number of interviews conducted.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_rounds
+    label: Total Rounds
+    expression: COUNT(round_guid)
+    description: Total number of interview rounds.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_plans
+    label: Total Plans
+    expression: COUNT(plan_guid)
+    description: Total number of interview plans.
+    format_preset: humanize
+    valid_percent_of_total: false
+  - name: total_workspaces
+    label: Total Workspaces
+    expression: COUNT(DISTINCT workspace_guid)
+    description: Total number of unique workspaces.
+    format_preset: humanize
+    valid_percent_of_total: false
+available_time_zones:
+  - America/Los_Angeles
+  - America/Chicago
+  - America/New_York
+  - Europe/London
+  - Europe/Paris
+  - Asia/Jerusalem
+  - Europe/Moscow
+  - Asia/Kolkata
+  - Asia/Shanghai
+  - Asia/Tokyo
+  - Australia/Sydney
+available_time_ranges:
+  - PT6H
+  - PT24H
+  - P7D
+  - P14D
+  - P4W
+  - P3M
+  - P12M
+  - rill-TD
+  - rill-WTD
+  - rill-MTD
+  - rill-QTD
+  - rill-YTD
+  - rill-PDC
+  - rill-PWC
+  - rill-PMC
+  - rill-PQC
+  - rill-PYC
