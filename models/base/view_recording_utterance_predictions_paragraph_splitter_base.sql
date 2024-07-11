@@ -1,0 +1,3 @@
+select
+  *
+from view_recording_utterance_predictions_paragraph_splitter
