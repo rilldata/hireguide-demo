@@ -4,7 +4,10 @@
 type: source
 
 connector: "athena"
-sql: "SELECT * FROM analytics_prod.view_interview_metadata limit 5"
+sql: "SELECT * FROM analytics_prod.view_interview_metadata"
 output_location: "s3://cloud.hireguide.prod.analytics/rill/"
 workgroup: "analytics-prod"
 region: "us-east-2"
+
+
+ 

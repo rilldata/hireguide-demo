@@ -1,10 +1,11 @@
 -- Model SQL
 -- Reference documentation: https://docs.rilldata.com/reference/project-files/models
 
-select * 
+select 
+*
 from view_meeting_utterances_and_ml_predictions vmuml
 join view_interview_metadata vim
-on vmuml.workspace_guid = vim.workspace_guid
+on vmuml.meeting_guid = vim.meeting_guid
 and vim.workspace_guid in 
 ('26e01fdd-8495-4aaf-8806-427e8e8ff2ef',
 '7354f961-cf78-4b03-b432-1ffba31306a7',
