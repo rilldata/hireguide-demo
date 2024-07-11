@@ -8,7 +8,45 @@ model: hireguide_joined_model
 timeseries: recording_start_datetime_utc
 smallest_time_grain: day
 default_time_range: P4W
+
+measures:
+  - name: recording_duration_in_min
+    expression: sum(recording_duration_minutes)
+    label: Recording Duration (Min)
+  - name: total_workspaces
+    expression: count(distinct workspace_guid)
+    label: Total Workspaces
+  - name: total_positions
+    label: Total Positions
+    expression: COUNT(DISTINCT role_guid)
+    description: Total number of unique positions.
+    format_preset: humanize
+    valid_percent_of_total: true 
+
+
+  - name: total_interviews
+    label: Total Interviews
+    expression: COUNT(distinct interview_guid)
+    description: Total number of interviews conducted.
+    format_preset: humanize
+    valid_percent_of_total: true
+  - name: total_rounds_with_a_guide
+    label: Total Rounds with a Guide
+    expression: COUNT(DISTINCT round_guid)
+    description: Total number of unique rounds with a guide.
+    format_preset: humanize
+    valid_percent_of_total: true
+  - name: total_unique_candidates_interviewed
+    label: Total Unique Candidates Interviewed
+    expression: COUNT(DISTINCT participant_guid)
+    description: Total number of unique candidates interviewed.
+    format_preset: humanize
+    valid_percent_of_total: true
+
 dimensions:
+  - column: recording_start
+  - column: recording_end
+  - column: recording_duration_minutes
   - label: Workspace Guid
     column: workspace_guid
     description: ""
@@ -60,37 +98,7 @@ dimensions:
   - label: Workspace Name
     column: workspace_name
     description: ""
-measures:
-  - name: total_interviews
-    label: Total Interviews
-    expression: COUNT(interview_guid)
-    description: Total number of interviews conducted.
-    format_preset: humanize
-    valid_percent_of_total: true
-  - name: total_positions
-    label: Total Positions
-    expression: COUNT(DISTINCT role_guid)
-    description: Total number of unique positions.
-    format_preset: humanize
-    valid_percent_of_total: true 
-  - name: total_rounds_with_a_guide
-    label: Total Rounds with a Guide
-    expression: COUNT(DISTINCT round_guid)
-    description: Total number of unique rounds with a guide.
-    format_preset: humanize
-    valid_percent_of_total: true
-  - name: total_interview_hours
-    label: Total Interview Hours
-    expression: SUM(EXTRACT(EPOCH FROM (CAST(recording_end_time_utc AS TIMESTAMP) - CAST(recording_start_time_utc AS TIMESTAMP))) / 3600.0)
-    description: Total number of interview hours conducted.
-    format_preset: humanize
-    valid_percent_of_total: true
-  - name: total_unique_candidates_interviewed
-    label: Total Unique Candidates Interviewed
-    expression: COUNT(DISTINCT participant_guid)
-    description: Total number of unique candidates interviewed.
-    format_preset: humanize
-    valid_percent_of_total: true
+
 available_time_zones:
   - America/Los_Angeles
   - America/Chicago
