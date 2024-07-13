@@ -9,3 +9,6 @@ ignore_paths:
 mock_users:
 - email: john@yourcompany.com
 - email: jane@partnercompany.com
+
+features:
+  - customDashboards

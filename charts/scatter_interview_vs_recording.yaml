@@ -1,0 +1,29 @@
+# Chart YAML
+# Reference documentation: https://docs.rilldata.com/reference/project-files/charts
+    
+type: component
+
+data:
+  metrics_sql: |
+    select
+      meeting_guid,
+      interview_minutes,
+      recording_minutes
+    from interview_metrics
+    where recording_minutes_dim > 1 and workspace_name = 'Linea'
+
+vega_lite: |
+  {
+    "data": {"name": "table"},
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "interview_minutes", 
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "recording_minutes", 
+        "type": "quantitative"
+      }
+    }
+  }

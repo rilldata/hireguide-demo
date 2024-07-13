@@ -6,6 +6,7 @@ type: metrics_view
 title: "Hireguide Interviews"
 model: hireguide_metadata_joined
 timeseries: meeting_start
+smallest_time_grain: day
 
 dimensions:
   - column: workspace_name
@@ -32,6 +33,12 @@ dimensions:
   - column: talent_name
     label: "Talent Name"
 
+  - column: meeting_guid
+    name: meeting_guid
+
+  - column: recording_duration_minutes
+    name: recording_minutes_dim
+
 measures:
   - expression: "Count(distinct workspace_guid)"
     label: "Total Workspaces"
@@ -43,9 +50,11 @@ measures:
     label: "Total Interviews"
 
   - expression: "sum(recording_duration_minutes)"
+    name: recording_minutes
     label: "Total Recording Minutes"
 
   - expression: "sum(meeting_duration_minutes)"
+    name: interview_minutes
     label: "Total Interview Minutes"
 
   - expression: "sum(CASE WHEN is_recorded = 'False' then meeting_duration_minutes else null end)"
@@ -57,8 +66,13 @@ measures:
   - expression: "Count(CASE WHEN interview_status NOT LIKE ('AWAITING_START', 'CANCELED') then virtual_meeting_guid else null end)"
     label: "Total Interviews Held"
 
+  - expression: Sum(CASE WHEN recording_duration_minutes is not null then meeting_duration_minutes - recording_duration_minutes else 0 end)
+    label: "Time Difference Scheduled/Recorded"
+
   - expression: "SUM(CASE WHEN candidate_status != 'IN_PROGRESS' then 1 else 0 end)"
     label: "Decisions recorded"
+
+
   
 
 

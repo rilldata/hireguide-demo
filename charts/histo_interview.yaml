@@ -1,0 +1,25 @@
+# Chart YAML
+# Reference documentation: https://docs.rilldata.com/reference/project-files/charts
+    
+type: component
+
+data:
+  metrics_sql: |
+    select
+      meeting_guid,
+      interview_minutes
+    from interview_metrics
+    where workspace_name = 'Linea'
+
+vega_lite: |
+  {
+    "data": {"name": "table"},
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "bin": true,
+        "field": "interview_minutes"
+      },
+      "y": {"aggregate": "count"}
+    }
+  }

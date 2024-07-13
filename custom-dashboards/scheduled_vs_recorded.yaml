@@ -1,0 +1,34 @@
+type: dashboard
+columns: 10
+gap: 4
+title: "Scheduled vs Recording Distrobutions"
+items:
+  - component:
+      markdown:
+        content: "Scheduled vs Recorded Distributions"
+        css:
+          font-size: "40px"
+    width: 8
+    height: 1
+    x: 1
+    y: 0
+  - component: dotplot_interview_vs_recording
+    height: 3
+    width: 4
+    x: 1
+    y: 1
+  - component: scatter_interview_vs_recording
+    height: 3
+    width: 4
+    x: 5
+    y: 1
+  - component: histo_recording
+    height: 3
+    width: 4
+    x: 5
+    y: 4
+  - component: histo_interview
+    height: 3
+    width: 4
+    x: 1
+    y: 4
