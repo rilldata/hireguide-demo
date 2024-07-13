@@ -1,0 +1,65 @@
+# Dashboard YAML
+# Reference documentation: https://docs.rilldata.com/reference/project-files/dashboards
+
+type: metrics_view
+
+title: "Hireguide Interviews"
+model: hireguide_metadata_joined
+timeseries: meeting_start
+
+dimensions:
+  - column: workspace_name
+    label: "Workspace Name"
+
+  - column: round_description
+    label: "Round Description"
+  
+  - column: interview_status
+    label: "Interview Status"
+
+  - column: job_posting_url
+    label: "Job Posting URL"
+
+  - column: source
+    label: "Source"
+
+  - column: ats_type
+    label: ATS
+
+  - column: candidate_status
+    label: Candidate Status
+
+  - column: talent_name
+    label: "Talent Name"
+
+measures:
+  - expression: "Count(distinct workspace_guid)"
+    label: "Total Workspaces"
+
+  - expression: "count(distinct plan_guid)"
+    label: "Total Positions"
+
+  - expression: "Count(Distinct interview_guid)"
+    label: "Total Interviews"
+
+  - expression: "sum(recording_duration_minutes)"
+    label: "Total Recording Minutes"
+
+  - expression: "sum(meeting_duration_minutes)"
+    label: "Total Interview Minutes"
+
+  - expression: "sum(CASE WHEN is_recorded = 'False' then meeting_duration_minutes else null end)"
+    label: "Total Interview Minutes: Non-Recorded"
+
+  - expression: "Sum(meeting_without_recording_flag)"
+    label: "Total Interviews Held: Non-Recorded"
+
+  - expression: "Count(CASE WHEN interview_status NOT LIKE ('AWAITING_START', 'CANCELED') then virtual_meeting_guid else null end)"
+    label: "Total Interviews Held"
+
+  - expression: "SUM(CASE WHEN candidate_status != 'IN_PROGRESS' then 1 else 0 end)"
+    label: "Decisions recorded"
+  
+
+
+

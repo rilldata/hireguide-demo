@@ -11,5 +11,6 @@ select
     CASE 
         WHEN updated_at = 'None' THEN NULL
         ELSE CAST(updated_at AS TIMESTAMP)
-    END AS updated_at
+    END AS updated_at,
+    type as round_type
 from round

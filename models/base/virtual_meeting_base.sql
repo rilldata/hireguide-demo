@@ -31,5 +31,6 @@ select
     CASE 
         WHEN recording_start_time_utc = 'None' THEN NULL
         ELSE CAST(recording_start_time_utc AS TIMESTAMP)
-    END AS recording_start_time_utc
+    END AS recording_start_time_utc,
+    guid as virtual_meeting_guid
 from virtual_meeting
