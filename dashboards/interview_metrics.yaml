@@ -9,12 +9,12 @@ timeseries: meeting_start
 smallest_time_grain: day
 
 dimensions:
-  - column: workspace_name
-    label: "Workspace Name"
-
   - column: round_description
     label: "Round Description"
   
+  - column: workspace_name
+    label: "Workspace Name"
+
   - column: interview_status
     label: "Interview Status"
 

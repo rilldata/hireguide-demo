@@ -23,7 +23,6 @@ measures:
     format_preset: humanize
     valid_percent_of_total: true 
 
-
   - name: total_interviews
     label: Total Interviews
     expression: COUNT(distinct interview_guid)
